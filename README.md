@@ -104,5 +104,5 @@ AppComponent đã làm 2 việc:
 - Truyền giá trị `Angular` cho hello component thông qua trường `ng`.
 - Nhận vào string sau khi sự kiện `onClick` ở hello component được kích hoạt
 
-Bài viết em tham khảo : <a href='https://medium.com/@foolishneo/understanding-input-output-and-eventemitter-in-angular-c1aeb9fff594'>Understanding @Input, @Output and EventEmitter in Angular</a>
+Bài viết em tham khảo : <a href='https://medium.com/@foolishneo/understanding-input-output-and-eventemitter-in-angular-c1aeb9fff594'>Understanding @Input, @Output and EventEmitter in Angular</a><br>
 <a href='https://www.webcomponents.org/introduction'>Introduction web component</a>
