@@ -105,4 +105,4 @@ AppComponent đã làm 2 việc:
 - Nhận vào string sau khi sự kiện `onClick` ở hello component được kích hoạt
 
 Bài viết em tham khảo : <a href='https://medium.com/@foolishneo/understanding-input-output-and-eventemitter-in-angular-c1aeb9fff594'>Understanding @Input, @Output and EventEmitter in Angular</a>
-<a href='https://www.webcomponents.org/introduction'></a>
+<a href='https://www.webcomponents.org/introduction'>Introduction web component</a>
