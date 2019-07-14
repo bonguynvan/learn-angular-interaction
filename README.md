@@ -2,7 +2,7 @@
 Đề bài: Đọc và viết ý hiểu về `component`, `@input`, `@output` - việc tương tác giữa các component trong project angular. sau đó lấy ví dụ
 gửi lại file doc vào email thienth3@fe.edu.vn
 
-Angular 2 cũng như nhiều JavaScript framework hiện nay đều áp dụng x hướng, định hướng web component cho hướng phát triển của họ.
+Angular 2 cũng như nhiều JavaScript framework hiện nay đều áp dụng xu hướng, định hướng web component cho hướng phát triển của họ.
 
 Web components: là tập hợp các Web APIs cho phép chúng ta tạo ra một thẻ HTML riêng, mang các đặc tính riêng, đóng gói, có thể tái sử dụng. Web component được xây dựng trên chuẩn web hiện tại, có thể tương thích với tất cả các library và framework JS có thể làm việc với HTML.  
 <ref: https://www.webcomponents.org/introduction>  
@@ -19,14 +19,16 @@ Nhiều tính năng trong 1 component làm cho quá trình phát triển ứng d
 
 Ví dụ đoạn code sau: 
 
-`@Component({`\
-  `selector: 'todo-item',`\
-  `...`\
-`})`\
-`export class TodoItemComponent {`\
-  `@Input()  item`\
-  `@Output() onChange = new EventEmitter()`\
-`}`
+```javascript
+@Component({
+  selector: 'todo-item',
+  ...
+})
+export class TodoItemComponent {
+  @Input()  item
+  @Output() onChange = new EventEmitter()
+}
+```
 
 Đoạn code trên nghĩa là:   
 
@@ -34,15 +36,18 @@ Ví dụ đoạn code sau:
 - gửi data cho tôi, tôi sẽ nhận nó và lưu trữ vào item property.
 - nhân tiện sau khi xử lí data tôi sẽ gửi nó qua thuộc tính `onChange`.
 
-Giờ ta có một component  là `TodoListComponent` contains  `TodoItemComponent`.
+Giờ ta tạo một component là `TodoListComponent` contains  `TodoItemComponent`.
 Trong template của `TodoListComponent`, ta có đoạn code sau:
 
-`...`\
-`<todo-item`\
-`[item]="myTask"`\
-`(onChange)="handleChange($event)"`\
-`</todo-item>`\
-`…`
+```javascript
+...
+<todo-item
+[item]="myTask"
+(onChange)="handleChange($event)"
+</todo-item>
+…
+```
+
 
 Nghĩa là:
 - `TodoList` thêm giá trị trong thuộc tính `myTask` và truyền nó vào `TodoItemComponent`.
@@ -51,3 +56,55 @@ Nghĩa là:
 Cùng xem một ví dụ.
 
 Ở đây ta tạo 2 component, `HelloComponent` nest trong `AppComponent`. `HelloComponent` có một `@Input` và `@Output`.
+
+hello.component.ts  
+```javascript
+@Component({
+  selector: 'app-hello',
+  templateUrl: './hello.component.html',
+  styleUrls: ['./hello.component.css']
+})
+
+export class HelloComponent implements OnInit {
+  ...
+  @Input() myFriend: string;
+  @Output() onClick = new EventEmitter();
+}
+```
+
+`HelloComponent` đã nhận một giá trị kiểu string và lưu vào thuộc tính myFriend.
+
+Khi ta click vào hello component, thuộc tính `onClick` trong `@Output` sẽ truyền ra bên ngoài với thông điệp 'Hello Bro!' 
+
+hello.component.html  
+```javascript
+<p (click)="onClick.emit('Hello Bro!')">
+```
+
+Dưới đây là AppComponent 
+
+app.component.ts  
+```javascript
+...
+export class AppComponent  {
+  ng = 'Angular' ;
+  result = '' ;
+  upCase = (st:string) => { ... }
+}
+...
+```
+
+app.component.html  
+```javascript
+...
+<app-hello myFriend="{{ ng }}" (onClick)="upCase($event)"></app-hello>
+...
+```
+
+
+AppComponent đã làm 2 việc:
+ 
+- Truyền giá trị `Angular` cho hello component thông qua trường `ng`.
+- Nhận vào string sau khi sự kiện `onClick` ở hello component được kích hoạt
+
+Tham khảo : <a src='https://medium.com/@foolishneo/understanding-input-output-and-eventemitter-in-angular-c1aeb9fff594'>Understanding @Input, @Output and EventEmitter in Angular</a>
