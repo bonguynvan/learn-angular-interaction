@@ -44,7 +44,7 @@ Trong template của `TodoListComponent`, ta có đoạn code sau:
 [item]="myTask"
 (onChange)="handleChange($event)"
 </todo-item>
-…
+...
 ```
 
 Nghĩa là:
