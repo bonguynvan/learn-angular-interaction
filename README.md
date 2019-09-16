@@ -1,6 +1,5 @@
 # learn-angular-interaction
-Đề bài: Đọc và viết ý hiểu về `component`, `@input`, `@output` - việc tương tác giữa các component trong project angular. sau đó lấy ví dụ
-gửi lại file doc vào email thienth3@fe.edu.vn
+`component`, `@input`, `@output` - việc tương tác giữa các component trong project angular
 
 Angular 2 cũng như nhiều JavaScript framework hiện nay đều áp dụng xu hướng, định hướng web component cho hướng phát triển của họ.
 
